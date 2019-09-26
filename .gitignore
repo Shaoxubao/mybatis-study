@@ -1,0 +1,14 @@
+.idea
+.idea/*
+.idea/*.xml
+.idea/workspace.xml
+.svn
+.svn/*
+*.iml
+.target
+*.tld
+*/*.iml
+*/target
+*/*/target
+*/dubbo-registry
+*/*/dubbo-registry
