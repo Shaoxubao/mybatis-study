@@ -26,9 +26,9 @@
 			<transactionManager type="JDBC"/>
 			<dataSource type="POOLED">
 				<property name="driver" value="com.mysql.jdbc.Driver"/>
-				<property name="url" value="jdbc:mysql://yunjidevelop.mysql.rds.aliyuncs.com:3306/example?useUnicode=true"/>
-				<property name="username" value="yunjidevelop"/>
-				<property name="password" value="yunjidevelopIdc123"/>
+				<property name="url" value="..."/>
+				<property name="username" value="..."/>
+				<property name="password" value="..."/>
 			</dataSource>
 		</environment>
 	</environments>
