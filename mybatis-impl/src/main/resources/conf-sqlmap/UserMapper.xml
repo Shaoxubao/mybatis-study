@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper nameSpace="com.baoge.mapper.UserMapper">
+    <select id="queryById" resultType ="com.baoge.bean.User">
+        select * from t_user where id = ?
+    </select>
+</mapper>
