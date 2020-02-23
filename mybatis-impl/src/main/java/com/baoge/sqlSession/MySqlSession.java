@@ -9,7 +9,7 @@ import java.lang.reflect.Proxy;
  */
 
 /**
- * ——> MyConfiguration ——> MySqlSession ——> MyExecutor  ……> mySql
+ * 用户——> MyConfiguration ——> MySqlSession ——> MyExecutor  ……> mySql
  *                                                    ↓               ↑
  *                                                    MyMapperProxy ——
  *
