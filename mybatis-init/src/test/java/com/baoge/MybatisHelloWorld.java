@@ -27,7 +27,7 @@ public class MybatisHelloWorld {
             SqlSession session = sqlMapper.openSession();
             try {
                 User user = session.selectOne("UserMapper.getUser", 1);
-                System.out.println(user.getUserId() + "," + user.getUserName());
+                System.out.println(user.getId() + "," + user.getUserName());
             } finally {
                 session.close();
             }

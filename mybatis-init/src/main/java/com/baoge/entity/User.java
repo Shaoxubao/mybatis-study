@@ -6,16 +6,21 @@ package com.baoge.entity;
  */
 public class User {
 
-    private Integer userId;
+    private Integer id;
 
     private String userName;
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public User(Integer id, String userName) {
+        this.id = id;
+        this.userName = userName;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getUserName() {
@@ -24,5 +29,13 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                '}';
     }
 }

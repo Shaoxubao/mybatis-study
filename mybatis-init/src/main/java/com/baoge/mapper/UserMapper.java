@@ -7,5 +7,6 @@ import com.baoge.entity.User;
  * @Date 2019/9/25 20:46
  */
 public interface UserMapper {
-    User getUser(Integer userId);
+    User getUser(Integer id);
+    int updateUser(User user);
 }
