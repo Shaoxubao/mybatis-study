@@ -2,6 +2,7 @@ package com.baoge;
 
 import com.baoge.entity.User;
 import org.apache.ibatis.executor.BatchExecutor;
+import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.executor.ReuseExecutor;
 import org.apache.ibatis.executor.SimpleExecutor;
 import org.apache.ibatis.mapping.MappedStatement;
@@ -62,7 +63,7 @@ public class TestMyBatisExecutor {
     public void testReuseExecutor() throws SQLException {
         ReuseExecutor executor = new ReuseExecutor(configuration, jdbcTransaction);
         MappedStatement statement = configuration.getMappedStatement("com.baoge.mapper.UserMapper.getUser");
-        List<User> userList = executor.doQuery(statement, 1, RowBounds.DEFAULT, SimpleExecutor.NO_RESULT_HANDLER,
+        List<User> userList = executor.doQuery(statement, 1, RowBounds.DEFAULT, ReuseExecutor.NO_RESULT_HANDLER,
                 statement.getBoundSql(1));
         executor.doQuery(statement, 1, RowBounds.DEFAULT, SimpleExecutor.NO_RESULT_HANDLER,
                 statement.getBoundSql(1));
@@ -83,6 +84,18 @@ public class TestMyBatisExecutor {
         }
 
         executor.doFlushStatements(false);
+    }
+
+    /**
+     * 基础处理器
+     * 若localCacheScope设置为STATEMENT，则会刷新一级缓存
+     */
+    @Test
+    public void testBaseExecutor() throws SQLException {
+        Executor executor = new SimpleExecutor(configuration, jdbcTransaction);
+        MappedStatement statement = configuration.getMappedStatement("com.baoge.mapper.UserMapper.getUser");
+        executor.query(statement, 1, RowBounds.DEFAULT, Executor.NO_RESULT_HANDLER);
+        executor.query(statement, 1, RowBounds.DEFAULT, Executor.NO_RESULT_HANDLER);
     }
 
 
