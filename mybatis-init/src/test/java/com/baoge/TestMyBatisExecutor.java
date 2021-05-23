@@ -1,10 +1,7 @@
 package com.baoge;
 
 import com.baoge.entity.User;
-import org.apache.ibatis.executor.BatchExecutor;
-import org.apache.ibatis.executor.Executor;
-import org.apache.ibatis.executor.ReuseExecutor;
-import org.apache.ibatis.executor.SimpleExecutor;
+import org.apache.ibatis.executor.*;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.RowBounds;
@@ -96,6 +93,19 @@ public class TestMyBatisExecutor {
         MappedStatement statement = configuration.getMappedStatement("com.baoge.mapper.UserMapper.getUser");
         executor.query(statement, 1, RowBounds.DEFAULT, Executor.NO_RESULT_HANDLER);
         executor.query(statement, 1, RowBounds.DEFAULT, Executor.NO_RESULT_HANDLER);
+    }
+
+    /**
+     * 缓存执行器
+     */
+    @Test
+    public void testCacheExecutor() throws SQLException {
+        Executor executor = new SimpleExecutor(configuration, jdbcTransaction);
+        Executor cacheExecutor = new CachingExecutor(executor);
+
+        MappedStatement statement = configuration.getMappedStatement("com.baoge.mapper.UserMapper.getUser");
+        cacheExecutor.query(statement, 1, RowBounds.DEFAULT, Executor.NO_RESULT_HANDLER);
+        cacheExecutor.query(statement, 1, RowBounds.DEFAULT, Executor.NO_RESULT_HANDLER);
     }
 
 
